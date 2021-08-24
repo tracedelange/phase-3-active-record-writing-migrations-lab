@@ -1,8 +1,8 @@
 require_relative '../db/migrate/01_create_students'
 require_relative '../db/migrate/02_add_grade_and_birthdate_to_students'
-require_relative '../db/migrate/03_change_datatype_for_birthdate'
+require_relative '../db/migrate/03_change_datatype_for_birthday'
 
-describe ChangeDatatypeForBirthdate do
+describe ChangeDatatypeForBirthday do
   before do
     sql = "DROP TABLE IF EXISTS students"
     ActiveRecord::Base.connection.execute(sql)
@@ -10,7 +10,7 @@ describe ChangeDatatypeForBirthdate do
     # Manually runs the migration
     CreateStudents.new.change
     AddGradeAndBirthdateToStudents.new.change
-    ChangeDatatypeForBirthdate.new.change
+    ChangeDatatypeForBirthday.new.change
 
     Student.reset_column_information
   end
